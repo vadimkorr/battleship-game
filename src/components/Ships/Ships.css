@@ -1,0 +1,13 @@
+.ships-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ship-container {
+  display: flex;
+  padding: 10px;
+}
+
+.ship-container > img {
+  max-width: 200px;
+}
