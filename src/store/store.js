@@ -9,8 +9,16 @@ const initState = {
 export const boardReducer = (state = initState, action) => {
   switch (action.type) {
     case 'FIRE': {
+      const { col, row, shipType, tileState } = action.payload
       return {
         ...state,
+        fires: {
+          ...state.fires,
+          [`${col}_${row}`]: {
+            shipType,
+            tileState,
+          },
+        },
       }
     }
     case 'SAVE_LAYOUT': {
@@ -31,3 +39,17 @@ export const store = createStore(
     board: boardReducer,
   })
 )
+
+export function fire({ col, row }) {
+  const tileLayoutData = store.getState().board.layout[`${col}_${row}`]
+
+  return {
+    type: 'FIRE',
+    payload: {
+      col,
+      row,
+      shipType: tileLayoutData?.shipType || null,
+      tileState: tileLayoutData ? 'HIT' : 'MISS',
+    },
+  }
+}

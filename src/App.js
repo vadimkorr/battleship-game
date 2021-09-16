@@ -3,7 +3,7 @@ import './App.css'
 
 import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { getLayout, getShipTypes } from './utils/layout'
+import { getLayout, getShipTypes, getNormalizedLayout } from './utils/layout'
 import { useResize } from './utils/useResize'
 import { Board } from './components/Board/Board'
 
@@ -17,7 +17,7 @@ function App() {
     dispatch({
       type: 'SAVE_LAYOUT',
       payload: {
-        layout: getLayout(),
+        layout: getNormalizedLayout(getLayout()),
         shipTypes: getShipTypes(),
       },
     })

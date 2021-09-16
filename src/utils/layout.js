@@ -54,3 +54,16 @@ export function getShipTypes() {
     submarine: { size: 3, count: 1 },
   }
 }
+
+export function getNormalizedLayout(layout) {
+  const normalizedLayout = {}
+  layout.forEach((shipData) => {
+    const shipType = shipData.ship
+    shipData.positions.forEach(([col, row]) => {
+      normalizedLayout[`${col}_${row}`] = {
+        shipType,
+      }
+    })
+  })
+  return normalizedLayout
+}
