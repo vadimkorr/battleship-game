@@ -1,17 +1,32 @@
 import { createStore, combineReducers } from 'redux'
 
 const initState = {
-  layout: {},
-  shipTypes: {},
-  fires: {},
+  layout: {}, // { [col_row]: { shipType } }
+  shipTypes: {}, // { [shipType]: { size, count, hits } }
+  fires: {}, // { [col_row]: { shipType, tileState } }
 }
 
 export const boardReducer = (state = initState, action) => {
   switch (action.type) {
     case 'FIRE': {
       const { col, row, shipType, tileState } = action.payload
+
+      const updateShipTypes = (shipTypes) => {
+        if (shipType) {
+          return {
+            ...shipTypes,
+            [shipType]: {
+              ...shipTypes[shipType],
+              hits: (shipTypes[shipType].hits || 0) + 1,
+            },
+          }
+        }
+        return shipTypes
+      }
+
       return {
         ...state,
+        shipTypes: updateShipTypes(state.shipTypes),
         fires: {
           ...state.fires,
           [`${col}_${row}`]: {

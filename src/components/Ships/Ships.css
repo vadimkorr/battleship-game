@@ -11,3 +11,8 @@
 .ship-container > img {
   max-width: 200px;
 }
+
+.ship-container > .ship-counter {
+  display: flex;
+  align-items: center;
+}
