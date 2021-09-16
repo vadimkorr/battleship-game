@@ -1,12 +1,17 @@
 import logo from './logo.svg'
 import './App.css'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { getLayout, getShipTypes } from './utils/layout'
+import { useResize } from './utils/useResize'
+import { Board } from './components/Board/Board'
 
 function App() {
   const dispatch = useDispatch()
+
+  const boardWrapper = useRef(null)
+  const { squareSize } = useResize(boardWrapper)
 
   useEffect(() => {
     dispatch({
@@ -18,7 +23,20 @@ function App() {
     })
   }, [dispatch])
 
-  return <div className="App"></div>
+  return (
+    <div className="app-container">
+      <div className="board-wrapper" ref={boardWrapper}>
+        <div
+          style={{
+            height: `${squareSize}px`,
+            width: `${squareSize}px`,
+          }}
+        >
+          <Board />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default App

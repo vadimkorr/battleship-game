@@ -1,0 +1,18 @@
+.tile-container {
+  width: 100%;
+  border: 2px solid grey;
+}
+
+.tile-state-hit {
+  background: url(../../assets/Hit.png);
+  background-size: cover;
+}
+
+.tile-state-miss {
+  background: url(../../assets/Miss.png);
+  background-size: cover;
+}
+
+.tile-state-empty {
+  background-color: #fff;
+}
