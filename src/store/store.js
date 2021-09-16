@@ -14,8 +14,11 @@ export const boardReducer = (state = initState, action) => {
       }
     }
     case 'SAVE_LAYOUT': {
+      const { layout, shipTypes } = action.payload
       return {
         ...state,
+        layout,
+        shipTypes,
       }
     }
     default:
