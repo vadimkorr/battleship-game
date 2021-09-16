@@ -1,0 +1,35 @@
+.scores-container {
+  display: flex;
+}
+
+.score {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-player-1 {
+  background-color: orange;
+}
+.score-player-2 {
+  background-color: darkcyan;
+}
+
+.score-number {
+  border-bottom: 1px solid #363636;
+  font-weight: bold;
+  font-size: 36px;
+  color: #363636;
+  margin: 0;
+  padding: 20px;
+}
+
+.player {
+  font-weight: bold;
+  font-size: 27px;
+  color: #363636;
+  margin: 0;
+  padding: 20px;
+}

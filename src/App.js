@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { getLayout, getShipTypes, getNormalizedLayout } from './utils/layout'
 import { useResize } from './utils/useResize'
 import { Board } from './components/Board/Board'
+import { Scores } from './components/Scores/Scores'
 
 function App() {
   const dispatch = useDispatch()
@@ -25,6 +26,9 @@ function App() {
 
   return (
     <div className="app-container">
+      <div className="score-wrapper">
+        <Scores />
+      </div>
       <div className="board-wrapper" ref={boardWrapper}>
         <div
           style={{
